@@ -16,7 +16,6 @@
             ?>
         </nav>
         <section class="col-9 pr-5">
-        <a href='index.php?add' type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</a>
             <?php
                 if(isset($_POST['submit'])){
                     $_SESSION['table']=[
@@ -27,11 +26,14 @@
                         'situation'=>$_POST['situation']
                     ];
                     echo '<h2 class="text-center">Données Sauvegardées</h2>';
-                }else{}
+                }
 
-                if(isset($_GET['add'])){
+                else if(isset($_GET['add'])){
                     include 'includes/form.inc.html';
-                }else{} 
+                }else{?>
+                    <a href='index.php?add' type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</a>
+                <?php
+                } 
             ?>     
         </section>
     </div>
