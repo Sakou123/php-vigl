@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>VigL</title>
-</head>
+<html lang="fr">
+<?php include 'includes/head.inc.html'?>
 <body>
-<header>
-    <?php include 'includes/header.inc.html'?>        
-</header>
+<?php include 'includes/header.inc.html'?>
     <div class="row">
         <nav class="col-3 px-5">
-            <button type="button" class="btn btn-outline-secondary mx-auto btn-block px-3 mb-2 gap-2">Home</button>
-            <ul class="nav flex-column">
-                <?php include 'includes/ul.inc.html'?>
-            </ul>
+            
+            <a href='index.php' type="button" class="btn btn-outline-secondary mx-auto btn-block px-3 mb-2 gap-2">Home</a>
+            <?php
+            session_start();
+                if(!empty($_SESSION)){
+                    $table = $_SESSION['table'];
+                    include 'includes/ul.inc.html';
+                }else{} 
+            ?>
         </nav>
         <section class="col-9 pr-5">
-            
-            <button type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</button>
-            <form>
-                <?php include 'includes/form.inc.html'?>
-            </form>
+        <a href='index.php?add' type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</a>
+            <?php
+                if(isset($_POST['submit'])){
+                    $_SESSION['table']=[
+                        'prenom'=>$_POST['prenom'],
+                        'nom'=>$_POST['nom'],
+                        'age'=>$_POST['age'],
+                        'size'=>$_POST['size'],
+                        'situation'=>$_POST['situation']
+                    ];
+                    echo '<h2 class="text-center">Données Sauvegardées</h2>';
+                }else{}
+
+                if(isset($_GET['add'])){
+                    include 'includes/form.inc.html';
+                }else{} 
+            ?>     
         </section>
     </div>
-<footer>
-    <?php include 'includes/footer.inc.html'?>
-</footer>
+<?php include 'includes/footer.inc.html'?>
 </body>
 </html>
