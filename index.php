@@ -7,15 +7,15 @@
     <?php include 'includes/header.inc.html'?>
         <div class="container">
             <div class="row">
-                <!-- NAV + OPEN SESSION -->
+                <!-- NAV + OPEN SESSION / COOKIE READ -->
                 <nav class="col-sm-3 pt-3   ">
                     <a href='index.php' type="button" class="btn btn-outline-secondary w-100 mb-2">Home</a>
                     <?php
                         if(isset($_SESSION['table'])){
                             $table = $_SESSION['table'];
                             include 'includes/ul.inc.html';  
-                        }else if(!empty($_COOKIE['info'])){
-                            $table = unserialize($_COOKIE['info']);
+                        }else if(!empty($_COOKIE['info'])){ 
+                            $table = unserialize($_COOKIE['info']); //Remet le cookie en donnée lisible pour notre $table
                             include 'includes/ul.inc.html';
                         }
                     ?>
@@ -45,8 +45,9 @@
                             if (empty($_SESSION['table']['size'])){
                                 $_SESSION['table']['size']=1.6;
                             }
-                            
+                            // Setup cookie
                             setcookie('info', serialize($_SESSION['table']) , time() + 300);
+
                             // passage de 1.8 a 1.80
                             $_SESSION['table']['size'] = number_format($_SESSION['table']['size'], 2, '.', ' ');
 
@@ -121,6 +122,7 @@
                         // Delete
                         else if(isset($_GET['del'])) {
                             session_destroy();
+                            setcookie('info', null, -1, '/');
                             echo '<h2>Les données ont bien été supprimées.</h2>';
                         }
                         //Bouton Ajouter de données
