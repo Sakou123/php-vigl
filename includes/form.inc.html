@@ -1,24 +1,30 @@
 <form action='index.php?add' method='POST'>
 
     <h2 class="text-center">Ajouter des données</h2>
-
     <!-- FORMULAIRE -->
 
+    <!-- PRENOM -->
     <div class="form-group">
         <label>Prénom</label>
-        <input name='prenom' type="text" class="form-control" placeholder="Renseignez votre prénom">
+        <input name='first_name' type="text" class="form-control" placeholder="Renseignez votre prénom">
     </div>
+
+    <!-- NOM -->
     <div class="form-group">
         <label>Nom</label>
-        <input name='nom' type="text" class="form-control" placeholder="Renseignez vos nom">
+        <input name='last_name' type="text" class="form-control" placeholder="Renseignez votre nom">
     </div>
+
+    <!-- AGE -->
     <div class="form-group">
         <label>Age (18 à 60 ans)</label>
         <input name='age' type="number" class="form-control" min="18" max="60" placeholder="18">
     </div>
+
+    <!-- TAILLE -->
     <div class="input-group mb-2">
         <div class="input-group-prepend">
-        <div class="input-group-text">Taille (entre 1,6 et 2m)</div>
+            <div class="input-group-text">Taille (entre 1,6 et 2m)</div>
         </div>
         <input name='size' type="number" class="form-control" min="1.6" max="2" step="0.01" placeholder="1,6">
         <div class="input-group-prepend">
@@ -27,20 +33,17 @@
     </div>
 
     <!-- APPRENANT FORMATEUR -->
-
     <div class="form-check">
-    <input name='situation' class="form-check-input" type="radio" value="apprenant" checked>
-    <label class="form-check-label" >Apprenant</label>
+        <input name='situation' class="form-check-input" type="radio" value="apprenant" checked>
+        <label class="form-check-label" >Apprenant</label>
     </div>
     <div class="form-check">
-    <input name='situation' class="form-check-input" type="radio" value="formateur">
-    <label class="form-check-label" >Formateur</label>
+        <input name='situation' class="form-check-input" type="radio" value="formateur">
+        <label class="form-check-label" >Formateur</label>
     </div>
 
     <!-- BOUTON -->
-
     <div class="d-flex justify-content-end">
-    <button name='submit' type="submit" class="btn btn-primary">Enregistrer les données</button>
+        <button name='submit' type="submit" class="btn btn-primary">Enregistrer les données</button>
     </div>
-
 </form>
