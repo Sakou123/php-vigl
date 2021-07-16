@@ -128,9 +128,9 @@
                             //Bouton Ajouter de données
                         else{
                             echo '<a href="index.php?add" type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</a>';
-                            if(!empty($_COOKIE['info'])){
-                                var_dump($_COOKIE['info']);
-                            }
+                            // if(!empty($_COOKIE['info'])){
+                            //     var_dump($_COOKIE['info']);
+                            // }
                         }
                     ?>     
                 </section>
