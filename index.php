@@ -7,7 +7,7 @@
     <?php include 'includes/header.inc.html'?>
         <div class="container">
             <div class="row">
-                <!-- NAV + OPEN SESSION / COOKIE READ -->
+                            <!-- NAV + OPEN SESSION / COOKIE READ -->
                 <nav class="col-sm-3 pt-3   ">
                     <a href='index.php' type="button" class="btn btn-outline-secondary w-100 mb-2">Home</a>
                     <?php
@@ -20,7 +20,7 @@
                         }
                     ?>
                 </nav>
-                <!-- Remplissage du tableau + changement entre les differentes "pages" -->
+                            <!-- Remplissage du tableau + changement entre les differentes "pages" -->
                 <section class="col-sm-9 pt-3 pr-5">
                     <?php
                         if(isset($_POST['submit'])){
@@ -54,12 +54,12 @@
                             echo '<h2 class="text-center">Données Sauvegardées</h2>';
                         }
 
-                        // Formulaire
+                            // Formulaire
                         else if(isset($_GET['add'])){
                             include 'includes/form.inc.html';
                         }
 
-                        // Debogage
+                            // Debogage
                         else if(isset($_GET['debugging'])) {
                             echo "<h2>Débogage</h2><br>";
                             echo "<p>===> Lecture du tableau à l'aide de la fonction print_r()</p>";
@@ -69,7 +69,7 @@
                             echo'</pre>';
                         }
 
-                        // Concatenation
+                            // Concatenation
                         else if(isset($_GET['concatenation'])) {
                             
                             echo "<h2>Concaténation</h2><br>";
@@ -94,7 +94,7 @@
                             echo $table['age'],' ans, ','je mesure ',$table['size'], 'm et je fais partie des ', $table['situation'],'s de la promo Simplon.<br><br>';
                         }
                         
-                        // Boucle
+                            // Boucle
                         else if(isset($_GET['loop'])) {
                             echo "<h2>Boucle</h2><br>";
                             echo "<p>===> Lecture du tableau à l'aide d'une boucle foreach</p>";
@@ -105,7 +105,7 @@
                             }
                         }
 
-                        // Fonction 
+                            // Fonction 
                         else if(isset($_GET['function'])) {
                             echo "<h2>Fonction</h2><br>";
                             echo "<p>===> Lecture du tableau à l'aide de la fonction readTable()</p>";
@@ -119,13 +119,13 @@
                             readTable($table);
                         }
 
-                        // Delete
+                            // Delete
                         else if(isset($_GET['del'])) {
                             session_destroy();
                             setcookie('info', null, -1, '/');
                             echo '<h2>Les données ont bien été supprimées.</h2>';
                         }
-                        //Bouton Ajouter de données
+                            //Bouton Ajouter de données
                         else{
                             echo '<a href="index.php?add" type="button" class="btn btn-primary mb-2 gap-2">Ajouter des données</a>';
                             if(!empty($_COOKIE['info'])){
